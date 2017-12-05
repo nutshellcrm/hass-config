@@ -19,6 +19,9 @@ frontend:
 # Enables configuration UI
 config:
 
+# Enable hassio config panel
+hassio:
+
 http:
   api_password: !secret http_password
   server_port: 80
