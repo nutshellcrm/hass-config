@@ -57,11 +57,28 @@ map:
 # Track the sun
 sun:
 
+binary_sensor:
+  - platform: template
+    sensors:
+      nutshell_master:
+        friendly_name: "Nutshell master"
+        device_class: safety
+        value_template: >
+          {{ not is_state('sensor.nutshell_master_raw_status', 'SUCCESS') }}
+
 sensor:
   - platform: darksky
     api_key: !secret darksky_api_key
     monitored_conditions:
       - temperature
+  - platform: rest
+    resource: "https://nutcracker.squirrel.house/view/Nutshell%20App/job/Nutshell/job/nutshell/job/master/lastBuild/api/json?tree=result"
+    name: "Nutshell master raw status"
+    username: "amills@nutshell.com"
+    password: !secret jenkins_api_token
+    authentication: basic
+    value_template: >
+      {{ value_json.result }}
 
 # Text to speech
 tts:

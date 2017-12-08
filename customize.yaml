@@ -1,2 +1,4 @@
 sensor.dark_sky_temperature:
   friendly_name: Outside
+sensor.nutshell_master_raw_status:
+  hidden: true
