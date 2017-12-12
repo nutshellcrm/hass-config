@@ -1,1 +1,29 @@
-[]
+- action:
+  - data:
+      brightness: 255
+      entity_id: light.osram_lightify_br_rgbw_00a5c1f9_3
+      rgb_color:
+      - 255
+      - 0
+      - 0
+    service: light.turn_on
+  alias: Build Failed
+  condition: []
+  id: '1513112347676'
+  trigger:
+  - entity_id: binary_sensor.nutshell_master
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      brightness: 255
+      color_temp: 370
+      entity_id: light.osram_lightify_br_rgbw_00a5c1f9_3
+    service: light.turn_on
+  alias: Build Restored
+  condition: []
+  id: '1513112391167'
+  trigger:
+  - entity_id: binary_sensor.nutshell_master
+    platform: state
+    to: 'off'
