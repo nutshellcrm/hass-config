@@ -7,6 +7,7 @@ default_view:
     - sensor.dark_sky_temperature
     - binary_sensor.nutshell_master
     - binary_sensor.coffee_brewing
+    - light.osram_lightify_br_rgbw_00a5c1f9_3
 
 zwave:
   view: yes
