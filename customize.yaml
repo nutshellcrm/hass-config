@@ -4,3 +4,4 @@ binary_sensor.coffee_brewing:
   icon: mdi:coffee
 light.osram_lightify_br_rgbw_00a5c1f9_3:
   friendly_name: Floor lamp
+  supported_features: 51
