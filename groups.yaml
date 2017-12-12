@@ -6,6 +6,7 @@ default_view:
     - sensor.coffee_maker_power
     - sensor.dark_sky_temperature
     - binary_sensor.nutshell_master
+    - binary_sensor.coffee_brewing
 
 zwave:
   view: yes

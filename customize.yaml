@@ -1,2 +1,4 @@
 sensor.dark_sky_temperature:
   friendly_name: Outside
+binary_sensor.coffee_brewing:
+  icon: mdi:coffee
