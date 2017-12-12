@@ -1,0 +1,25 @@
+default_view:
+  view: yes
+  name: Nutshell
+  entities:
+    - sun.sun
+    - sensor.coffee_maker_power
+    - sensor.dark_sky_temperature
+    - binary_sensor.nutshell_master
+
+zwave:
+  view: yes
+  icon: mdi:nfc
+  entities:
+    - group.coffee_maker
+
+coffee_maker:
+  name: Coffee Maker
+  entities:
+    - switch.coffee_maker_switch
+    - zwave.coffee_maker
+    - sensor.coffee_maker_current
+    - sensor.coffee_maker_energy
+    - sensor.coffee_maker_power
+    - sensor.coffee_maker_previous_reading
+    - sensor.coffee_maker_voltage
