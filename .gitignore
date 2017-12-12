@@ -5,3 +5,10 @@ secrets.yaml
 
 *.log
 *.db
+
+OZW_Log.txt
+zwcfg_*.xml
+zwscene.xml
+options.xml
+pyozw.sqlite
+zigbee.db

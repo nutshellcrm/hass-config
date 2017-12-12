@@ -57,6 +57,14 @@ map:
 # Track the sun
 sun:
 
+zwave:
+  usb_path: /dev/ttyUSB0
+  network_key: !secret zwave_network_key
+
+zha:
+  usb_path: /dev/ttyUSB1
+  database_path: zigbee.db
+
 notify:
   - platform: slack
     api_key: !secret slack_api_key
