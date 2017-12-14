@@ -82,9 +82,6 @@ binary_sensor:
     sensors:
       coffee_brewing:
         friendly_name: "Coffee Brewing"
-        # Specify entity id dependencies so sensor only needs to update template on relevant changes.
-        entity_id:
-          - sensor.coffee_maker_pwer
         value_template: >
           {{ states.sensor.coffee_maker_power.state|float > 1000 }}
         delay_on:
