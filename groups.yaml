@@ -15,6 +15,17 @@ zwave:
   entities:
     - group.coffee_maker
 
+ci:
+  view: yes
+  entities:
+    - group.nutshell_master
+
+nutshell_master:
+  name: Nutshell master build
+  entities:
+    - sensor.nutshell_master_raw_status
+    - binary_sensor.nutshell_master
+
 coffee_maker:
   name: Coffee Maker
   entities:
