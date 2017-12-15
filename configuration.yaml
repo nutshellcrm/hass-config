@@ -46,7 +46,8 @@ conversation:
 history:
 
 # View all events in a logbook
-logbook:
+# Disabled for the moment. Performance problems on this box
+# logbook:
 
 recorder:
   db_url: !secret db_url
