@@ -77,7 +77,7 @@ binary_sensor:
         friendly_name: "Nutshell master"
         device_class: safety
         value_template: >
-          {{ is_state('sensor.nutshell_master_raw_status', 'FAILURE') }}
+          {{ is_state('sensor.nutshell_master_raw_status', 'FAILURE') or is_state('sensor.nutshell_master_raw_status', 'UNSTABLE') }}
   - platform: template
     sensors:
       coffee_brewing:
