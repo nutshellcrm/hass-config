@@ -5,3 +5,7 @@ binary_sensor.coffee_brewing:
 light.osram_lightify_br_rgbw_00a5c1f9_3:
   friendly_name: Floor lamp
   supported_features: 51
+input_boolean.coffee_brewed_today:
+  friendly_name: Coffee Was Brewed Today
+  hidden: true
+  icon: mdi:coffee

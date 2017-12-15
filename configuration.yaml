@@ -58,6 +58,9 @@ map:
 # Track the sun
 sun:
 
+input_boolean:
+  coffee_brewed_today:
+
 zwave:
   usb_path: /dev/ttyUSB0
   network_key: !secret zwave_network_key

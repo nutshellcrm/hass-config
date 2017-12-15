@@ -27,3 +27,38 @@
   - entity_id: binary_sensor.nutshell_master
     platform: state
     to: 'off'
+- action:
+  - data:
+      message: '{{ [''Hot coffee on the way! :coffee:'',''Coffee brewing! :highfive:'',''Coffee
+        time! :excited:'','':coffee_parrot::coffee_parrot::coffee_parrot::coffee_parrot:'']
+        | random }}'
+      target:
+      - '#coffee'
+    service: notify.notify
+  - data:
+      entity_id: input_boolean.coffee_brewed_today
+    service: input_boolean.turn_on
+  alias: Coffee Brewing
+  condition:
+  - condition: state
+    entity_id: input_boolean.coffee_brewed_today
+    state: 'off'
+  id: '1513374990227'
+  trigger:
+  - entity_id: binary_sensor.coffee_brewing
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: input_boolean.coffee_brewed_today
+    service: input_boolean.turn_off
+  alias: Reset Coffee Brewed Today Status
+  condition:
+  - condition: state
+    entity_id: input_boolean.coffee_brewed_today
+    state: 'on'
+  id: '1513375490034'
+  trigger:
+  - at: 00:00:00
+    platform: time
