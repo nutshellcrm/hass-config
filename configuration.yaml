@@ -85,9 +85,9 @@ binary_sensor:
         value_template: >
           {{ states.sensor.coffee_maker_power.state|float > 1000 }}
         delay_on:
-          seconds: 10
+          seconds: 180
         delay_off:
-          seconds: 10
+          seconds: 60
 
 
 sensor:
