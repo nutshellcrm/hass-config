@@ -39,10 +39,7 @@
       entity_id: input_boolean.coffee_brewed_today
     service: input_boolean.turn_on
   alias: Coffee Brewing
-  condition:
-  - condition: state
-    entity_id: input_boolean.coffee_brewed_today
-    state: 'off'
+  condition: []
   id: '1513374990227'
   trigger:
   - entity_id: binary_sensor.coffee_brewing
