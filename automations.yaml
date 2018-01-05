@@ -36,8 +36,8 @@
 - action:
   - data:
       message: '{{ [''Hot coffee on the way! :coffee:'',''Coffee brewing! :highfive:'',''Coffee
-        time! :excited:'','':coffee_parrot::coffee_parrot::coffee_parrot::coffee_parrot:'']
-        | random }}'
+        time! :excited:'','':coffee_parrot::coffee_parrot::coffee_parrot::coffee_parrot:'',''Coffee
+        coming up!'',''Thanks for making coffee! :heart:''] | random }}'
       target:
       - '#coffee'
     service: notify.notify
