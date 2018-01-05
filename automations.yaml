@@ -7,6 +7,12 @@
       - 0
       - 0
     service: light.turn_on
+  - data:
+      message: '@nutella say MASTER BUILD {{ states(''sensor.nutshell_master_raw_status'')
+        }}'
+      target:
+      - '#bots'
+    service: notify.notify
   alias: Build Failed
   condition: []
   id: '1513112347676'
