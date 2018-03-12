@@ -1,0 +1,30 @@
+light.osram_lightify_br_rgbw_00a5c1f9_3:
+  platform: zha
+  unique_id: 7c:b0:3e:aa:00:a5:c1:f9-3
+switch.coffee_maker_switch:
+  platform: zwave
+  unique_id: 2-72057594076282880
+sensor.coffee_maker_energy:
+  platform: zwave
+  unique_id: 2-72057594076495874
+sensor.coffee_maker_previous_reading:
+  platform: zwave
+  unique_id: 2-72057594076495890
+sensor.coffee_maker_power:
+  platform: zwave
+  unique_id: 2-72057594076496002
+sensor.coffee_maker_previous_reading_2:
+  platform: zwave
+  unique_id: 2-72057594076496018
+sensor.coffee_maker_voltage:
+  platform: zwave
+  unique_id: 2-72057594076496130
+sensor.coffee_maker_previous_reading_3:
+  platform: zwave
+  unique_id: 2-72057594076496146
+sensor.coffee_maker_current:
+  platform: zwave
+  unique_id: 2-72057594076496194
+sensor.coffee_maker_previous_reading_4:
+  platform: zwave
+  unique_id: 2-72057594076496210
