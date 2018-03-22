@@ -22,9 +22,12 @@
     to: 'on'
 - action:
   - data:
-      brightness: 255
-      color_temp: 370
+      brightness: 200
       entity_id: light.osram_lightify_br_rgbw_00a5c1f9_3
+      rgb_color:
+      - 120
+      - 255
+      - 0
     service: light.turn_on
   alias: Build Restored
   condition: []
