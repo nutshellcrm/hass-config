@@ -71,7 +71,12 @@ zha:
 
 notify:
   - platform: slack
-    api_key: !secret slack_api_key
+    name: slack_nutshell
+    api_key: !secret slack_nutshell_api_key
+    default_channel: '#homeautomation'
+  - platform: slack
+    name: slack_cahoots
+    api_key: !secret slack_cahoots_api_key
     default_channel: '#homeautomation'
 
 binary_sensor:

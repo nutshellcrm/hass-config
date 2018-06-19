@@ -12,7 +12,7 @@
         }}'
       target:
       - '#bots'
-    service: notify.notify
+    service: notify.slack_nutshell
   alias: Build Failed
   condition: []
   id: '1513112347676'
@@ -36,25 +36,32 @@
   - entity_id: binary_sensor.nutshell_master
     platform: state
     to: 'off'
-- action:
+- id: '1513374990227'
+  alias: Coffee Brewing
+  trigger:
+  - entity_id: binary_sensor.coffee_brewing
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
   - data:
       message: '{{ [''Hot coffee on the way! :coffee:'',''Coffee brewing! :highfive:'',''Coffee
         time! :excited:'','':coffee_parrot::coffee_parrot::coffee_parrot::coffee_parrot:'',''Coffee
         coming up!'',''Thanks for making coffee! :heart:''] | random }}'
       target:
       - '#coffee'
-    service: notify.notify
+    service: notify.slack_nutshell
+  - data:
+      message: '{{ [''Hot coffee on the way! :coffee:'',''Coffee brewing! :highfive:'',''Coffee
+        time! :excited:'','':coffee_parrot::coffee_parrot::coffee_parrot::coffee_parrot:'',''Coffee
+        coming up!'',''Thanks for making coffee! :heart:''] | random }}'
+      target:
+      - '#citycenter-coffee'
+    service: notify.slack_cahoots
   - data:
       entity_id: input_boolean.coffee_brewed_today
     service: input_boolean.turn_on
-  alias: Coffee Brewing
-  condition: []
-  id: '1513374990227'
-  trigger:
-  - entity_id: binary_sensor.coffee_brewing
-    from: 'off'
-    platform: state
-    to: 'on'
 - action:
   - data:
       entity_id: input_boolean.coffee_brewed_today
