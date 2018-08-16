@@ -43,14 +43,14 @@ updater:
 conversation:
 
 # Enables support for tracking state changes over time
-history:
+#history:
 
 # View all events in a logbook
 # Disabled for the moment. Performance problems on this box
 # logbook:
 
-recorder:
-  db_url: !secret db_url
+#recorder:
+#  db_url: !secret db_url
 
 # Enables a map showing the location of tracked devices
 map:
