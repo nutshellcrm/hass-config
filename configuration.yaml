@@ -23,7 +23,6 @@ config:
 hassio:
 
 http:
-  api_password: !secret http_password
   server_port: 80
   # Secrets are defined in the file secrets.yaml
   # api_password: !secret http_password
