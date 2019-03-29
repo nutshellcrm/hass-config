@@ -105,6 +105,7 @@ sensor:
     authentication: basic
     value_template: >
       {{ value_json.result }}
+    scan_interval: 5
 
 # Text to speech
 tts:
