@@ -79,7 +79,7 @@ binary_sensor:
         friendly_name: "Nutshell master"
         device_class: problem
         value_template: >
-          {{ is_state('sensor.nutshell_master_raw_status', 'FAILURE') or is_state('sensor.nutshell_master_raw_status', 'UNSTABLE') }}
+          {{ is_state('sensor.nutshell_master_raw_status', 'FAILURE') or is_state('sensor.nutshell_master_raw_status', 'UNSTABLE') or is_state('sensor.nutshell_master_raw_status', 'ABORTED') }}
   - platform: template
     sensors:
       coffee_brewing:
@@ -87,7 +87,7 @@ binary_sensor:
         value_template: >
           {{ states.sensor.coffee_maker_power.state|float > 1000 }}
         delay_on:
-          seconds: 180
+          seconds: 200
         delay_off:
           seconds: 60
 
@@ -106,10 +106,36 @@ sensor:
     value_template: >
       {{ value_json.result }}
     scan_interval: 5
+  - platform: rest
+    name: 'Newrelic open incident count'
+    resource: https://api.newrelic.com/v2/alerts_incidents.json?only_open=true
+    headers:
+      X-Api-Key: !secret newrelic_api_key
+    value_template: '{{ value_json.incidents | count }}'
+  - platform: template
+    sensors:
+      build_light_color:
+        friendly_name: 'Build light color'
+        value_template: >-
+          {% if is_state('sensor.nutshell_master_raw_status', 'FAILURE') or is_state('sensor.nutshell_master_raw_status', 'UNSTABLE') or is_state('sensor.nutshell_master_raw_status', 'ABORTED') %}
+            FF0000
+          {% else %}
+            48FF75
+          {% endif %}
+      incident_light_color:
+        friendly_name: 'Incident light color'
+        value_template: >-
+          {% if states('sensor.newrelic_open_incident_count') | int > 0 %}
+            FF0000
+          {% else %}
+            48FF75
+          {% endif %}
+
 
 # Text to speech
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
 
 group: !include groups.yaml
 automation: !include automations.yaml

@@ -1,5 +1,4 @@
 default_view:
-  view: yes
   name: Nutshell
   entities:
     - sun.sun
@@ -10,13 +9,11 @@ default_view:
     - light.osram_lightify_br_rgbw_00a5c1f9_3
 
 zwave:
-  view: yes
   icon: mdi:z-wave
   entities:
     - group.coffee_maker
 
 ci:
-  view: yes
   entities:
     - group.nutshell_master
 

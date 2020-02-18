@@ -1,43 +1,19 @@
-- action:
-  - data:
-      brightness: 255
-      entity_id: light.osram_lightify_br_rgbw_00a5c1f9_3
-      rgb_color:
-      - 255
-      - 0
-      - 0
-    service: light.turn_on
+- id: '1513112347676'
+  alias: Build failed
+  trigger:
+  - entity_id: binary_sensor.nutshell_master
+    platform: state
+    to: 'on'
+  condition: []
+  action:
   - data:
       message: '@nutella say MASTER BUILD {{ states(''sensor.nutshell_master_raw_status'')
         }}'
       target:
       - '#bots'
     service: notify.slack_nutshell
-  alias: Build Failed
-  condition: []
-  id: '1513112347676'
-  trigger:
-  - entity_id: binary_sensor.nutshell_master
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      brightness: 170
-      entity_id: light.osram_lightify_br_rgbw_00a5c1f9_3
-      rgb_color:
-      - 72
-      - 255
-      - 117
-    service: light.turn_on
-  alias: Build Restored
-  condition: []
-  id: '1513112391167'
-  trigger:
-  - entity_id: binary_sensor.nutshell_master
-    platform: state
-    to: 'off'
 - id: '1513374990227'
-  alias: Coffee Brewing
+  alias: Coffee brewed
   trigger:
   - entity_id: binary_sensor.coffee_brewing
     from: 'off'
@@ -46,32 +22,37 @@
   condition: []
   action:
   - data:
-      message: '{{ [''Hot coffee on the way! :coffee:'',''Coffee brewing! :highfive:'',''Coffee
+      entity_id: input_boolean.coffee_brewed_today
+    service: input_boolean.turn_on
+  - delay: 00:01:30
+  - data:
+      message: '{{ [''Hot coffee is ready! :coffee:'',''Coffee brewed! :highfive:'',''Coffee
         time! :excited:'','':coffee_parrot::coffee_parrot::coffee_parrot::coffee_parrot:'',''Coffee
-        coming up!'',''Thanks for making coffee! :heart:''] | random }}'
+        ready to go!'',''Thanks for making coffee! :heart:''] | random }}'
       target:
       - '#coffee'
     service: notify.slack_nutshell
-  - data:
-      message: '{{ [''Hot coffee on the way! :coffee:'',''Coffee brewing! :highfive:'',''Coffee
-        time! :excited:'','':coffee_parrot::coffee_parrot::coffee_parrot::coffee_parrot:'',''Coffee
-        coming up!'',''Thanks for making coffee! :heart:''] | random }}'
-      target:
-      - '#citycenter-coffee'
-    service: notify.slack_cahoots
-  - data:
-      entity_id: input_boolean.coffee_brewed_today
-    service: input_boolean.turn_on
-- action:
-  - data:
-      entity_id: input_boolean.coffee_brewed_today
-    service: input_boolean.turn_off
-  alias: Reset Coffee Brewed Today Status
+- id: '1513375490034'
+  alias: Reset coffee brewed today status
+  trigger:
+  - at: 00:00:00
+    platform: time
   condition:
   - condition: state
     entity_id: input_boolean.coffee_brewed_today
     state: 'on'
-  id: '1513375490034'
+  action:
+  - data:
+      entity_id: input_boolean.coffee_brewed_today
+    service: input_boolean.turn_off
+- id: '1582056936886'
+  alias: Build light
+  description: ''
   trigger:
-  - at: 00:00:00
-    platform: time
+  - entity_id: sensor.build_light_color
+    platform: state
+  - minutes: '30'
+    platform: time_pattern
+  condition: []
+  action:
+  - service: script.update_build_light_color
