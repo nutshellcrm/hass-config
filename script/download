@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Usage: script/download
+# Download the latest config files from the home assistant box
+
+# Safe bash settings
+# -e            Exit on command fail
+# -u            Exit on unset variable
+# -o pipefail   Set error if piped command has error code
+set -eu -o pipefail
+
+SCRIPT_DIR=$(dirname "$0")
+ROOT_DIR="$SCRIPT_DIR/.."
+
+cd "${ROOT_DIR}"
+scp -P 23 root@treehouse:/config/*.yaml "${ROOT_DIR}/"
