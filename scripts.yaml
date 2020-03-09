@@ -1,22 +1,22 @@
 update_build_light_color:
-  alias: "Update build light color"
+  alias: Update build light
   sequence:
-    - service: light.turn_on
-      data_template:
-        brightness: 255
-        entity_id: light.osram_lightify_br_rgbw_00a5c1f9_3
-        rgb_color:
-          - '{{ states("sensor.build_light_color")[0:2]|int(0,16) }}'
-          - '{{ states("sensor.build_light_color")[2:4]|int(0,16) }}'
-          - '{{ states("sensor.build_light_color")[4:6]|int(0,16) }}'
+  - data_template:
+      brightness: 255
+      entity_id: light.osram_lightify_br_rgbw_00a5c1f9_3
+      rgb_color:
+      - '{{ states("sensor.build_light_color")[0:2]|int(0,16) }}'
+      - '{{ states("sensor.build_light_color")[2:4]|int(0,16) }}'
+      - '{{ states("sensor.build_light_color")[4:6]|int(0,16) }}'
+    service: light.turn_on
 update_incident_light_color:
-  alias: "Update incident light color"
+  alias: Update incident light
   sequence:
-    - service: light.turn_on
-      data_template:
-        brightness: 255
-        entity_id: light.incident_light
-        rgb_color:
-          - '{{ states("sensor.incident_light_color")[0:2]|int(0,16) }}'
-          - '{{ states("sensor.incident_light_color")[2:4]|int(0,16) }}'
-          - '{{ states("sensor.incident_light_color")[4:6]|int(0,16) }}'
+  - data_template:
+      brightness: 255
+      entity_id: light.incident_light
+      rgb_color:
+      - '{{ states("sensor.incident_light_color")[0:2]|int(0,16) }}'
+      - '{{ states("sensor.incident_light_color")[2:4]|int(0,16) }}'
+      - '{{ states("sensor.incident_light_color")[4:6]|int(0,16) }}'
+    service: light.turn_on

@@ -51,7 +51,7 @@
   trigger:
   - entity_id: sensor.build_light_color
     platform: state
-  - minutes: '30'
+  - minutes: '5'
     platform: time_pattern
   condition: []
   action:
